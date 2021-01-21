@@ -1,10 +1,10 @@
-if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'config/dev.env'})
+require('dotenv').config({ silent: process.env.NODE_ENV === 'production',path:'config/dev.env'})
 const express=require('express')
 require('./db/mongoose')
 const userRouter=require('../src/routers/user')
 const taskRouter=require('../src/routers/task')
 
-
+console.log(process.env.NODE_ENV)
 
 const app=express()
 const port=process.env.PORT

@@ -4,7 +4,7 @@ const auth =require('../middleware/auth')
 const multer=require('multer')
 const sharp=require('sharp')
 const {WelcomeEmail,DeleteEmail}=require('../email/account')
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+require('dotenv').config({ silent: process.env.NODE_ENV === 'production',path:'config/dev.env'})
 
 const router=new express.Router()
 
