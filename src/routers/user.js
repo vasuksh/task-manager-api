@@ -3,6 +3,8 @@ const express=require('express')
 const auth =require('../middleware/auth')
 const multer=require('multer')
 const sharp=require('sharp')
+const {WelcomeEmail,DeleteEmail}=require('../email/account')
+require('dotenv').config()
 
 const router=new express.Router()
 
@@ -13,8 +15,9 @@ router.post('/users',async (req,res)=>{
     const user=User(req.body)
 
     try{
-        const token=await user.generateAuthToken()
         await user.save()
+        WelcomeEmail(user.email,user.name)
+        const token=await user.generateAuthToken()
         res.status(201).send({user,token})
     }catch(e)
     {
@@ -75,9 +78,11 @@ router.delete('/users/me',auth,async (req,res)=>{
         // if(!user)
         // return res.sendStatus(404)
         await req.user.remove()
+        DeleteEmail(req.user.email,req.user.name)
         res.send(req.user)
     }catch(e)
     {
+        console.log(e)
         res.sendStatus(500)
     }
 })

@@ -1,8 +1,6 @@
+require('dotenv').config({path:'config/dev.env'})
 const express=require('express')
 require('./db/mongoose')
-const User=require('./models/user')
-const Task=require('./models/task')
-const { findByIdAndUpdate, update } = require('./models/user')
 const userRouter=require('../src/routers/user')
 const taskRouter=require('../src/routers/task')
 

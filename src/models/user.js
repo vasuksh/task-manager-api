@@ -1,3 +1,4 @@
+require('dotenv').config({path:'config/dev.env'})
 const validator=require('validator')
 const mongoose=require('mongoose')
 const bcrypt=require('bcrypt')

@@ -22,8 +22,7 @@ router.get('/task',auth,async (req,res)=>{
     }
 
     try{
-   // const task=await Task.find({'owner':req.user._id})
-    
+   
      await req.user.populate({
             path: 'task',
             match,
