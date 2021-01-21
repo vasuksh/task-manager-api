@@ -1,5 +1,5 @@
 const sgMail=require('@sendgrid/mail')
-require('dotenv').config({path:'config/dev.env'})
+if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'config/dev.env'})
 
 sgMail.setApiKey(process.env.SENDGRIDAPI)
 

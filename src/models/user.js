@@ -1,4 +1,4 @@
-require('dotenv').config({path:'config/dev.env'})
+if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'config/dev.env'})
 const validator=require('validator')
 const mongoose=require('mongoose')
 const bcrypt=require('bcrypt')

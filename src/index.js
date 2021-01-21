@@ -1,4 +1,4 @@
-require('dotenv').config({path:'config/dev.env'})
+if (process.env.NODE_ENV !== 'production') require('dotenv').config({path:'config/dev.env'})
 const express=require('express')
 require('./db/mongoose')
 const userRouter=require('../src/routers/user')
