@@ -1,19 +1,7 @@
-require('dotenv').config({ silent: process.env.NODE_ENV === 'production',path:'config/dev.env'})
-const express=require('express')
-require('./db/mongoose')
-const userRouter=require('../src/routers/user')
-const taskRouter=require('../src/routers/task')
+const app =require('./app')
 
-console.log(process.env.NODE_ENV)
+console.log(process.env.PORT)
 
-const app=express()
-const port=process.env.PORT
-
-app.use(express.json())
-app.use(userRouter)
-app.use(taskRouter)
-
-
-app.listen(port,()=>{
-    console.log('Server is up on port'+ port)
+app.listen(process.env.PORT,()=>{
+    console.log('Server is up on port'+ process.env.PORT)
 })
